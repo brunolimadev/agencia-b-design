@@ -1,11 +1,138 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('./partials/header')%>
+
+<section class="container-fluid banner m-0 p-0">
+  <!--Carousel Wrapper-->
+  <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-2" data-slide-to="1"></li>
+      <li data-target="#carousel-example-2" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <div class="view">
+          <img class="d-block w-100" src="/images/carousel-1.jpg" alt="First slide">
+          <div class="mask rgba-black-light"></div>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive"><%= t1Carousel %></h3>
+          <p><%= p1Carousel %></p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <!--Mask color-->
+        <div class="view">
+          <img class="d-block w-100" src="/images/carousel-2.jpg" alt="Second slide">
+          <div class="mask rgba-black-light"></div>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive"><%= t2Carousel %></h3>
+          <p><%= p2Carousel %></p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <!--Mask color-->
+        <div class="view">
+          <img class="d-block w-100" src="/images/carousel-3.jpg" alt="Third slide">
+          <div class="mask rgba-black-strong"></div>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive"><%= t3Carousel %></h3>
+          <p><%= p3Carousel %></p>
+        </div>
+      </div>
+    </div>
+    <!--/.Slides-->
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+  </div>
+  <!--/.Carousel Wrapper-->
+</section>
+<main>
+  <section class="container" id="services">
+    <h2 class="text-center m-5">Serviços</h2>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <figure>
+          <img src="/images/services_img_01.png" alt="Imagem de Serviço 1">
+          <figcaption>Organização de Projetos</figcaption>
+        </figure>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <figure>
+          <img src="/images/services_img_02.png" alt="Imagem de Serviço 2">
+          <figcaption>Expertise em UI e UX</figcaption>
+        </figure>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <figure>
+          <img src="/images/services_img_03.png" alt="Imagem de Serviço 3">
+          <figcaption>Identidade Visual</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  <section class="container-fluid" id="about">
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col">
+          <img src="/images/about.png" alt="">
+        </div>
+        <div class="col">
+          <h3>Quem Somos</h3>
+          <p> <%= about %> </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="cotainer-fluid" id="contact">
+    <h2 class="text-center m-5">Contato</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-5">
+          <form action="">
+            <div class="input-group">
+              <label for="name" class="d-block w-100">Nome:</label>
+              <input type="text" name="name" id="name" class="form-control mb-4">
+            </div>
+            <div class="input-group">
+              <label for="email" class="d-block w-100">Email:</label>
+              <input type="email" name="email" id="email" class="form-control mb-4">
+            </div>
+            <div class="input-group">
+              <label for="message" class="d-block w-100">Mensagem:</label>
+              <textarea name="message" id="message" class="form-control mb-4"></textarea>
+            </div>
+
+            <button class="btn btn-secondary">Enviar</button>
+          </form>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-5">
+          <ul class="ml-0 pl-0">
+            <li><strong>Telefone:</strong> +55 (11) 2222-2222</li>
+            <li><strong>WhatsApp:</strong> +55 (11) 99999-9999</li>
+            <li><strong>Endereço:</strong> Av. Paulista, 1111 - São Paulo - SP</li>
+          </ul>
+
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.100031589745!2d-46.65543958540281!3d-23.564850567605408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c7da3c3b4b%3A0xd80a22268954a28!2sAv.%20Paulista%2C%201111%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001418-100!5e0!3m2!1sen!2sbr!4v1584914080087!5m2!1sen!2sbr"
+            width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+            tabindex="0"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include('./partials/footer')%>

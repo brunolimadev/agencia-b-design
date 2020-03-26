@@ -1,8 +1,81 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Bellota&display=swap');
+
+*{
+    font-family: 'Bellota', cursive;
 }
 
-a {
-  color: #00B7FF;
+body {
+    position: relative;
+  }
+
+header nav{
+    background-color: rgb(90, 0, 139);
+    color: #fff;
+    font-family: 'Bellota', cursive;
+}
+
+header nav ul li a{
+    color: #fff;
+}
+
+header nav ul li a:hover{
+    color: #fff;
+    font-weight: bold;
+}
+
+main h2{
+    text-transform: uppercase;
+}
+
+img{
+    width: 100%;
+}
+
+#services figure{
+    display: flex;
+    min-height: 300px ;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#services figcaption{
+    text-transform: uppercase;
+    color: rgb(90, 0, 139);
+    font-weight: bold;
+    align-self: flex-end;
+    text-align: center;
+}   
+
+
+#about .container .row .col:nth-child(1){
+    display: flex;
+    justify-content: center;
+}
+
+#about img {
+    width: 50%;
+}
+
+#about h3{
+    text-transform: uppercase;
+    color: rgb(90, 0, 139);
+    font-weight: bold;
+}
+
+#about p{
+    text-align: justify;
+}
+
+#contact ul{
+    list-style: none;
+}
+
+footer{
+    background-color: rgb(90, 0, 139);
+    font-family: 'Bellota', cursive;
+    color: #fff;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
