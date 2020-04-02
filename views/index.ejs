@@ -101,19 +101,27 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 mb-5">
-          <form action="">
+
+          <!-- Form -->
+          <form action="/contato" method="POST">
             <div class="input-group">
-              <label for="name" class="d-block w-100">Nome:</label>
+              <label for="name" class="d-block w-100">Nome: <strong>(*)</strong></label>
               <input type="text" name="name" id="name" class="form-control mb-4">
             </div>
             <div class="input-group">
-              <label for="email" class="d-block w-100">Email:</label>
+              <label for="email" class="d-block w-100">Email: <strong>(*)</strong></label>
               <input type="email" name="email" id="email" class="form-control mb-4">
             </div>
             <div class="input-group">
-              <label for="message" class="d-block w-100">Mensagem:</label>
+              <label for="message" class="d-block w-100">Mensagem: <strong>(*)</strong></label>
               <textarea name="message" id="message" class="form-control mb-4"></textarea>
             </div>
+
+            <% if(typeof msg !== 'undefined') {%>
+            <p class="alert alert-success">
+              Mensagem enviada com sucesso!
+            </p>
+            <%}%>
 
             <button class="btn btn-secondary">Enviar</button>
           </form>
@@ -134,5 +142,26 @@
     </div>
   </section>
 </main>
+<section id="newsletter" class="p-4">
+  <div class="container">
+    <div class="row">
+      <div class="col text-right">
+        <h2>Newsletter</h2>
+        <p>Cadastre-se e receba nossas novidades</p>
+      </div>
+      <div class="col">
+        <form action="" method="POST">
+            <!-- <input type="email" name="emailNews" id="emailNews" class="form-control" placeholder="email"> -->
+            <div class="input-group my-2">
+              <input type="email" name="emailNews" class="form-control  align-self-center" placeholder="email" aria-label="email" aria-describedby="button-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Cadastrar</button>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
 <%- include('./partials/footer')%>
