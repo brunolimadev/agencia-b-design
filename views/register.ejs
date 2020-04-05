@@ -1,0 +1,53 @@
+<%- include('./partials/header')%>
+
+<main class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Registro de Usuário</h2>
+            <p>Insira seu dados para efetuar o registro</p>
+            <form action="/users/user-register" method="POST">
+                <div class="md-form input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text md-addon" id="material-addon1">Nome:</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="" aria-label="Username"
+                        aria-describedby="material-addon1" name="name">
+                </div>
+                <div class="md-form input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text md-addon" id="material-addon1">Email:</span>
+                    </div>
+                    <input type="email" class="form-control" placeholder="" aria-label="Email"
+                        aria-describedby="material-addon1" name="email">
+                </div>
+                <div class="md-form input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text md-addon" id="material-addon1">Senha:</span>
+                    </div>
+                    <input type="password" class="form-control" placeholder="" aria-label="Senha"
+                        aria-describedby="material-addon1" name="password">
+                </div>
+
+                <% if(typeof msg !== 'undefined') { %>
+                <p class="alert alert-success mt-5"><%= msg %></p>
+                <% } %>
+
+                <% if(typeof erros !== 'undefined') { %>
+                <div class="alert alert-danger mt-5 p-2">
+                    <ul>
+                        <% erros.forEach(erro => { %>
+                        <li><%= erro.msg %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+                <% } %>
+
+                <button type="submit" class="btn btn-primary my-5">Registrar</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<%- include('./partials/modallogin')%>
+
+<%- include('./partials/footer')%>

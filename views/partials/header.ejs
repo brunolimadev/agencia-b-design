@@ -19,7 +19,7 @@
   <!-- Your custom styles (optional) -->
   <link rel="stylesheet" href="/stylesheets/base.css">
   <!-- Your custom styles (optional) -->
-  <link rel="stylesheet" href="/stylesheets/index.css">
+  <link rel="stylesheet" href="/stylesheets/<%= css || pageData.css %>">
 
 
 </head>
@@ -31,7 +31,7 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark" id="menu">
 
       <!-- Navbar brand -->
-      <a class="navbar-brand" href="#"><img src="/images/B-DESIGN-logo-white-200.png" alt="Logo"></a>
+      <a class="navbar-brand" href="http://localhost:3000/"><img src="/images/B-DESIGN-logo-white-200.png" alt="Logo"></a>
 
       <!-- Collapse button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -45,7 +45,7 @@
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="http://localhost:3000/">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -59,15 +59,21 @@
             <a class="nav-link" href="#contact">Contato</a>
           </li>
         </ul>
-        <!-- Links -->
-
+      
+        <!-- Login -->
         <ul class="navbar-nav ml-auto">
+          <% if(typeof user == 'undefined'){ %>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-user"></i> Login</a>
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLoginForm"><i class="fas fa-user"></i> Login</a>
           </li>
+          <% } %>
+          <% if(typeof user !== 'undefined'){ %>
+            <li class="nav-item">
+              <a class="nav-link" href="./admin/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
+          <% } %>
         </ul>
         
-
         <!-- <form class="form-inline">
           <div class="md-form my-0">
             <input class="form-control mr-sm-2 text-white" type="text" placeholder="Pesquisar" aria-label="Search">
@@ -81,3 +87,4 @@
 
     <!--/.Navbar -->
   </header>
+

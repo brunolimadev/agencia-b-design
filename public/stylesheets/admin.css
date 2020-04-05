@@ -1,0 +1,26 @@
+main{
+    margin-top: 2.5rem;
+    margin-bottom: 2rem; 
+    font-size: 1.6rem;
+    height: 70%;
+}
+
+main h2{
+    font-size: 2.6rem;
+}
+
+main form .form-control{
+    font-size: 1.6rem;
+}
+
+main form .btn{
+    font-size: 1.6rem;
+}
+
+main table td{
+    font-size: 1.6rem;
+}
+
+main .table thead th{
+    font-size: 1.6rem;
+}

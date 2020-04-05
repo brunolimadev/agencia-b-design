@@ -1,3 +1,4 @@
+
 <%- include('./partials/header')%>
 
 <section class="container-fluid banner m-0 p-0">
@@ -123,6 +124,16 @@
             </p>
             <%}%>
 
+            <% if(typeof msgErro !== 'undefined'){ %>
+            <ul class="alert alert-danger">
+              <%msgErro.forEach(erro => {%>
+                <li><%= erro.msg %></li>
+              <%})%>  
+            </ul>
+            <% } %>
+
+           
+
             <button class="btn btn-secondary">Enviar</button>
           </form>
         </div>
@@ -150,18 +161,28 @@
         <p>Cadastre-se e receba nossas novidades</p>
       </div>
       <div class="col">
-        <form action="" method="POST">
+        <form action="/newsletter" method="POST">
             <!-- <input type="email" name="emailNews" id="emailNews" class="form-control" placeholder="email"> -->
             <div class="input-group my-2">
               <input type="email" name="emailNews" class="form-control  align-self-center" placeholder="email" aria-label="email" aria-describedby="button-addon2">
               <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Cadastrar</button>
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cadastrar</button>
               </div>
             </div>
+            <% if(typeof msgErroNews !== 'undefined'){%>
+            <em class="text-danger"><%= msgErroNews[0].msg %></em>
+            <%}%>
+
+            <% if(typeof msgNews !== 'undefined'){%>
+              <em><%= msgNews %></em>
+            <%}%>
+
         </form>
       </div>
     </div>
   </div>
 </section>
+
+<%- include('./partials/modallogin')%>
 
 <%- include('./partials/footer')%>

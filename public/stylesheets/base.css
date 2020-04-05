@@ -8,11 +8,18 @@
 
 html{
     font-size: 62.5%;
+    height: 100vh;
 }
 
 body {
     position: relative;
+    height: 100%;
   }
+
+header{
+    max-height: 92px;
+    height: 100%;
+}
 
 header nav{
     background-color: rgb(90, 0, 139);
@@ -39,4 +46,12 @@ footer{
     justify-content: center;
     align-items: center;
     font-size: 1.6rem;
+}
+
+.form-control, .btn{
+    font-size: 1.6rem;
+}
+
+#modalLoginForm .modal-title{
+    font-size: 1.8rem;
 }
