@@ -15,6 +15,7 @@ const validaEmail = (req, res, next) => {
             next()
         }else{
             delete HomeController.pageData.msgNewsErro
+            delete HomeController.pageData.msgNews
             HomeController.pageData.msgNews = 'Email já cadastrado'
             res.render('index', HomeController.pageData)
         }
