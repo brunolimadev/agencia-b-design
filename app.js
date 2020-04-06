@@ -1,4 +1,5 @@
 const createError = require('http-errors');
+const compression = require('compression')
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -11,6 +12,8 @@ const loginRouter = require('./routes/loginRouter');
 const adminRouter = require('./routes/adminRouter');
 
 const app = express();
+
+app.use(compression());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,6 +35,8 @@ app.use('/', indexRouter);
 app.use('/login', loginRouter)
 app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
