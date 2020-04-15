@@ -29,9 +29,9 @@
         <tbody>
           <% contacts.forEach(contact => {%>
           <tr>
-            <td><%= contact.name%></td>
-            <td><%= contact.email%></td>
-            <td><%= contact.message%></td>
+            <td><%= contact.NOME%></td>
+            <td><%= contact.EMAIL%></td>
+            <td><%= contact.MENSAGEM%></td>
           </tr>
           <%})%>
         </tbody>
@@ -48,8 +48,8 @@
         <tbody>
           <% newsletters.forEach(news => {%>
             <tr>
-            <td><%= news.email%></td>
-            <td><%= news.dataCadastro%></td>
+            <td><%= news.EMAIL%></td>
+            <td><%= news.DATA_SYS%></td>
           </tr>
             <%})%>
         </tbody>

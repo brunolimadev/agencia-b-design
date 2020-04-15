@@ -21,7 +21,7 @@ const HomeController = {
         delete pageData.msgErro
         delete pageData.msgNews
         delete pageData.msgErroNews
-        res.render('index', pageData)
+        res.render('index', {pageData: pageData, user: req.session.user})
     },
     processaContato: (req, res) => {
 

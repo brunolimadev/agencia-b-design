@@ -7,6 +7,8 @@ const UserController = require('../controllers/UserController')
 
 router.get('/', UserController.viewAdmin)
 
+router.get('/logout', UserController.logout)
+
 
 
 module.exports = router

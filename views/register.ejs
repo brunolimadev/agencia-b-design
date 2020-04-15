@@ -5,7 +5,7 @@
         <div class="col-6">
             <h2>Registro de Usuário</h2>
             <p>Insira seu dados para efetuar o registro</p>
-            <form action="/users/user-register" method="POST">
+            <form action="/users/user-register" method="POST" enctype="multipart/form-data">
                 <div class="md-form input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text md-addon" id="material-addon1">Nome:</span>
@@ -27,9 +27,16 @@
                     <input type="password" class="form-control" placeholder="" aria-label="Senha"
                         aria-describedby="material-addon1" name="password">
                 </div>
+                <div class="md-form input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text md-addon" id="material-addon1">Avatar:</span>
+                    </div>
+                    <input type="file" class="form-control" placeholder="" aria-label="Avatar"
+                        aria-describedby="material-addon1" name="avatar">
+                </div>
 
-                <% if(typeof msg !== 'undefined') { %>
-                <p class="alert alert-success mt-5"><%= msg %></p>
+                <% if(typeof pageData.msg !== 'undefined') { %>
+                <p class="alert alert-success mt-5"><%= pageData.msg %></p>
                 <% } %>
 
                 <% if(typeof erros !== 'undefined') { %>

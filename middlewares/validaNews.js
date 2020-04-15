@@ -3,6 +3,8 @@ const fs = require('fs')
 const HomeController = require('../controllers/HomeController')
 
 const validaEmail = (req, res, next) => {
+
+    
     if(fs.existsSync(path.join('db','newsletters.json'))){
         let file = path.join('db','newsletters.json')
 

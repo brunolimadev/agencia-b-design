@@ -19,7 +19,7 @@
   <!-- Your custom styles (optional) -->
   <link rel="stylesheet" href="/stylesheets/base.css">
   <!-- Your custom styles (optional) -->
-  <link rel="stylesheet" href="/stylesheets/<%= css || pageData.css %>">
+  <link rel="stylesheet" href="/stylesheets/<%= pageData.css %>">
 
 
 </head>
@@ -62,14 +62,13 @@
       
         <!-- Login -->
         <ul class="navbar-nav ml-auto">
-          <% if(typeof user == 'undefined'){ %>
+          <% if(typeof user == 'undefined' || user == 'null'){ %>
           <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLoginForm"><i class="fas fa-user"></i> Login</a>
           </li>
-          <% } %>
-          <% if(typeof user !== 'undefined'){ %>
+          <% } else { %>
             <li class="nav-item">
-              <a class="nav-link" href="./admin/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+              <a class="nav-link" href="http://localhost:3000/admin/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </li>
           <% } %>
         </ul>
