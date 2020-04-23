@@ -118,15 +118,15 @@
               <textarea name="message" id="message" class="form-control mb-4"></textarea>
             </div>
 
-            <% if(typeof msg !== 'undefined') {%>
+            <% if(typeof pageData.msg !== 'undefined') {%>
             <p class="alert alert-success">
               Mensagem enviada com sucesso!
             </p>
             <%}%>
 
-            <% if(typeof msgErro !== 'undefined'){ %>
+            <% if(typeof pageData.msgErro !== 'undefined'){ %>
             <ul class="alert alert-danger">
-              <%msgErro.forEach(erro => {%>
+              <%pageData.msgErro.forEach(erro => {%>
                 <li><%= erro.msg %></li>
               <%})%>  
             </ul>

@@ -6,6 +6,8 @@ const Email = require('../config/Email')
 // const ModelUser = require('../models/users')
 const Sequelize = require('sequelize')
 const configDB = require('../config/Database')
+const {Contact, Newsletter} = require('../models/index')
+
 
 const pageData = {
     css: 'register.css',
@@ -48,16 +50,12 @@ const UserController = {
 
         if(typeof userSession !== 'undefined'){
 
-            const db = new Sequelize(configDB)
+            // const db = new Sequelize(configDB)
 
-            const contatos = await db.query('SELECT * FROM contatos', {
-                type: Sequelize.QueryTypes.SELECT
-            })
+            const contatos = await Contact.findAll()
 
-            const newsletters = await db.query('SELECT * FROM newsletters', {
-                type: Sequelize.QueryTypes.SELECT
-            })
-
+            const newsletters = await Newsletter.findAll()
+            
             // MÉTODO ANTIGO COM JSON 
             
             // let fileContacts = path.join('db','contacts.json')
@@ -114,6 +112,7 @@ const UserController = {
                     <strong>Usuário: ${email}</strong>
                     `,
                 }
+
                 // Envia email 
                 // Email.sendMail(emailSend, (error) => {
                 //     if(error){

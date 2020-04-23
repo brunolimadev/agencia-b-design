@@ -1,6 +1,8 @@
 const path = require('path')
 const fs = require('fs')
 let {check, validationResult, body} = require('express-validator')
+const Sequelize = require('sequelize')
+const configDb = require('../config/Database')
 
 const pageData = {
     css: 'index.css',
@@ -23,79 +25,101 @@ const HomeController = {
         delete pageData.msgErroNews
         res.render('index', {pageData: pageData, user: req.session.user})
     },
-    processaContato: (req, res) => {
+    processaContato: async (req, res) => {
 
         let erros = validationResult(req)
 
+        const db = new Sequelize(configDb)
+
         if(erros.isEmpty()){
             let {name, email, message} = req.body
-
             let data = new Date()
-            data = `${data.getUTCDay()}-${data.getUTCMonth()}-${data.getFullYear()} ${data.getHours()}:${data.getMinutes()}`
+            data = `${data.getFullYear()}-${data.getUTCMonth()}-${data.getUTCDay()} ${data.getHours()}:${data.getMinutes()}`
             let contact = {name, email, message, data}
 
-            const fileContacts = path.join('db','contacts.json')
-            let contactList = []
+            await db.query('INSERT INTO contatos(NOME_CONTATO, EMAIL_CONTATO, MENSAGEM, DATA_SYS) values(:NOME, :EMAIL, :MENSAGEM, :DATA_SYS)', {
+                replacements : {
+                    NOME: name,
+                    EMAIL: email,
+                    MENSAGEM: message,
+                    DATA_SYS: data
+                },
+                type: Sequelize.QueryTypes.INSERT
+            })
 
-            if(fs.existsSync(fileContacts)){
-                contactList = JSON.parse(fs.readFileSync(fileContacts, {encoding: 'utf-8'}))
-            }else{
-                if(!fs.existsSync(path.join('db'))){
-                    fs.mkdirSync(path.join('db'))
-                }
-            }
+            // MÉTODO ANTIGO EM JSON
+            // const fileContacts = path.join('db','contacts.json')
+            // let contactList = []
 
-            contactList.push(contact)
-            contactList = JSON.stringify(contactList)
+            // if(fs.existsSync(fileContacts)){
+            //     contactList = JSON.parse(fs.readFileSync(fileContacts, {encoding: 'utf-8'}))
+            // }else{
+            //     if(!fs.existsSync(path.join('db'))){
+            //         fs.mkdirSync(path.join('db'))
+            //     }
+            // }
+
+            // contactList.push(contact)
+            // contactList = JSON.stringify(contactList)
         
-            fs.writeFileSync(fileContacts,contactList)
+            // fs.writeFileSync(fileContacts,contactList)
 
             pageData.msg = 'Contato Enviado com Sucesso!',
             delete pageData.msgErro
 
-            res.render('index', pageData)    
+            res.render('index', {pageData})    
         }else{
             pageData.msgErro = erros.errors
-            res.render('index', pageData)
+            res.render('index', {pageData})
             // res.send(erros)
         } 
     },
-    processaNewsletter: (req, res) => {
+    processaNewsletter: async (req, res) => {
 
         let erros = validationResult(req)
         
         if(erros.isEmpty()){
             let {emailNews} = req.body
             let data = new Date()
-            data = `${data.getUTCDay()}-${data.getUTCMonth()}-${data.getFullYear()} ${data.getHours()}:${data.getMinutes()}`
+            data = `${data.getFullYear()}-${data.getUTCMonth()}-${data.getUTCDay()} ${data.getHours()}:${data.getMinutes()}`
             let newsletter = {email: emailNews, dataCadastro: data}
             let fileNewsletter = path.join('db','newsletters.json')
-            let newsList = []
 
+            const db = new Sequelize(configDb)
 
-            if(fs.existsSync(fileNewsletter)){
-                newsList = JSON.parse(fs.readFileSync(fileNewsletter,{encoding: 'utf-8'}))
-            }else{
-                if(!fs.existsSync(path.join('db'))){
-                    fs.mkdirSync(path.join('db'))
-                }
-            }
+            await db.query('INSERT INTO newsletters(EMAIL_NEWS,DATA_SYS) values(:EMAIL, :DATA_SYS)', {
+                replacements : {
+                    EMAIL: emailNews,
+                    DATA_SYS: data
+                },
+                type: Sequelize.QueryTypes.INSERT
+            })
 
-            newsList.push(newsletter)
-            newsList = JSON.stringify(newsList)
+            // let newsList = []
+            // if(fs.existsSync(fileNewsletter)){
+            //     newsList = JSON.parse(fs.readFileSync(fileNewsletter,{encoding: 'utf-8'}))
+            // }else{
+            //     if(!fs.existsSync(path.join('db'))){
+            //         fs.mkdirSync(path.join('db'))
+            //     }
+            // }
 
-            fs.writeFileSync(fileNewsletter, newsList)
+            // newsList.push(newsletter)
+            // newsList = JSON.stringify(newsList)
+
+            // fs.writeFileSync(fileNewsletter, newsList)
 
             pageData.msgNews = 'Email cadastrado com sucesso!',
             delete pageData.msgErroNews
 
             // res.send(pageData.msgNews)
-            res.render('index', pageData)
+            res.render('index', {pageData})
+            // this.viewIndex()
         }else{
             delete pageData.msgNews
             pageData.msgErroNews = erros.errors
             // res.send(pageData.msgErroNews)
-            res.render('index', pageData)
+            res.render('index', {pageData})
         }
     }
 }

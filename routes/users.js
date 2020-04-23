@@ -27,6 +27,5 @@ router.post('/user-register/', upload.any(),[
   check('password').isLength({min:6}).withMessage('A senha deve conter no mínimo 6 caracteres')
 ], validaUserRegister, UserController.register);
 
-// router.post('/user-register/', upload.any(), UserController.register);
 
 module.exports = router;

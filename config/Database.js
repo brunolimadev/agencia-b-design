@@ -1,8 +1,9 @@
 const Database = {
     username: 'root',
-    password: '',
+    port: "3306",
+    password: 'brn5801991',
     database: 'bdesign',
-    host: 'localhost',
+    host: '127.0.0.1',
     dialect: 'mysql'
 }
 

@@ -3,9 +3,15 @@
 <main class="container">
   <h2>Olá <%= user.name %></h2>
   <em>Seja bem vindo ao portal B-DESIGN</em>
+
+    <div class="row">
+      <div class="col-3">
+        <div class="box-filter">
+            <input type="text" name="filter" placeholder="Filtre pelo email" class="form-control my-2">
+        </div>
+      </div>
+    </div>
   <hr>
-
-
   <ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="tab-contacts" data-toggle="tab" href="#contacts" role="tab"
@@ -29,8 +35,8 @@
         <tbody>
           <% contacts.forEach(contact => {%>
           <tr>
-            <td><%= contact.NOME%></td>
-            <td><%= contact.EMAIL%></td>
+            <td><%= contact.NOME_CONTATO%></td>
+            <td><%= contact.EMAIL_CONTATO%></td>
             <td><%= contact.MENSAGEM%></td>
           </tr>
           <%})%>
